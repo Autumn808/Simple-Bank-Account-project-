@@ -1,0 +1,76 @@
+//Autumn Capasso
+//UMUC Project 2 ATM
+//This class will hold all the functional logic of Withdraw, Transfer and Deposit
+
+
+import javax.swing.*;
+import java.text.DecimalFormat;
+
+
+public class Account {
+
+    //variable
+    public double balance;
+    public int count;
+    //public double amount;
+    //public double deposit;
+    private double surCharge = 1.5;
+    JOptionPane frame;
+
+    private static DecimalFormat df = new DecimalFormat("0.00");
+
+
+    //method for  balance
+    public void setBalance(double balance) {
+        this.balance = balance;
+
+    }
+
+
+    //returns the balance so it can be used in other places in the porgram
+    public double getBalance() {
+        return this.balance;
+
+    }
+
+
+    //Creating the Checking & Savings Accounts Subclasses
+
+
+    //The Deposite Method
+    public void deposit(double depositAmount) {
+        this.balance = this.balance + depositAmount;
+    }
+
+
+    //Withdraw Method
+    public void withdraw(double withdrawAmount) throws InsufficientFunds {
+
+        if (this.balance - withdrawAmount < 0) {
+            throw new InsufficientFunds();
+        }
+
+
+        this.balance = this.balance - withdrawAmount;
+        count++;
+
+    }
+        public void SurCharge ( double surCharge, double withdrawAmount) throws InsufficientFunds {
+            balance(withdrawAmount  + surCharge);
+            this.balance (withdrawAmount + surCharge);
+
+        }
+
+    private void balance(double v) {
+    }
+
+    //Transfer Methods for Transfering to and From each account
+    public void transferTo(double transferAmount) throws InsufficientFunds {
+        if (this.balance - transferAmount < 0){
+            throw new InsufficientFunds();
+    }
+this.balance =this.balance -transferAmount;
+}
+
+}
+
